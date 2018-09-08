@@ -1,0 +1,18 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: 2018-09-08T19:40:07Z
+  name: sumo-cluster-reader
+  selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/sumo-cluster-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: sumo-cluster-reader
+subjects:
+- kind: ServiceAccount
+  name: sumologic-fluentd
+  namespace: logging
