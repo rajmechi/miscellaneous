@@ -13,7 +13,7 @@ curl -kH "Authorization: Bearer $TOKEN" \
 
 
 Examples:
-# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/iap-dvl/pods/jenkins-1-l289v/metrics/memory-usage" | grep "value" | tail -4
+# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/PROJECT-NAME/pods/POD-NAME/metrics/memory-usage" | grep "value" | tail -4
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  2347    0  2347    0     0  25480      0 --:--:-- --:--:-- --:--:-- 25791
@@ -21,7 +21,7 @@ Examples:
     "value": 2493915136
     "value": 2489217024
     "value": 2489217024
-# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/iap-dvl/pods/iap-346-ng2f5/metrics/memory-usage" | grep "value" | tail -4
+# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/PROJECT-NAME/pods/POD-NAME/metrics/memory-usage" | grep "value" | tail -4
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  2347    0  2347    0     0  20610      0 --:--:-- --:--:-- --:--:-- 20769
@@ -29,7 +29,7 @@ Examples:
     "value": 1024651264
     "value": 1024651264
     "value": 1024651264
-# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/iap-dvl/metrics/memory-usage" | grep "value" | tail -4
+# curl -kH "Authorization: Bearer zzzz" -X GET "https://XXXX:8443/api/v1/proxy/namespaces/openshift-infra/services/https:heapster:/api/v1/model/namespaces/PROJECT-NAME/metrics/memory-usage" | grep "value" | tail -4
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  2347    0  2347    0     0  20069      0 --:--:-- --:--:-- --:--:-- 20232
