@@ -1,6 +1,16 @@
-#RUN python3 <scriptname>
-#REPLACE <REPLACE TOKEN> AND <REPLACE URL>
-# Choose Megabytes or MIB at totalmemusage etc.
+'''
+RUN python3 <scriptname>
+REPLACE <REPLACE TOKEN> AND <REPLACE URL>
+Choose Megabytes or MIB at totalmemusage etc.
+
+Example output:
+cat cluster_usage.csv 
+namespace,Memory Usage,Memory Request,Memory Limit,CPU Uaage Rate,CPU Request,CPU Limit
+app-storage,1934.893056,314.5728,0.0,22,300,0
+chris-bolton-sbx,453.984256,536.870912,536.870912,2,0,0
+default,18792.931328,1610.612736,0.0,425,600,0
+gtmtest,38.248448,0.0,0.0,2,0,0
+'''
 
 import json
 import requests
