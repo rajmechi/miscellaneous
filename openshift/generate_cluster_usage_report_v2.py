@@ -23,6 +23,9 @@ import csv
 with open('cluster_usage.csv', mode='a') as usage_file:
          usage_writer = csv.writer(usage_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
          usage_writer.writerow(['namespace', 'Memory Usage-MiB', 'Memory Request-MiB', 'Memory Limit-MiB', 'CPU Uaage Rate', 'CPU Request', 'CPU Limit', 'Memory Quots-MiB', 'CPU Quots' ])
+#used below for custom quota names for diffrent namespaces
+arr1 = ["-prd", "-int", "-build" ]
+arr2 = ["-1-sbx", "sbx-", "-2-sbx" ]
 
 #change below vars
 ocpurl = "https://<REPLACE URL>"
@@ -160,7 +163,7 @@ while i < numprojects:
          cpu_quota = 0
          print(rtoutjsonload['items'][i]['metadata']['name'] + "CPU: " + str(cpu_quota) + " MEMORY: " + str(memory_quota) )
       else:
-         if "-prd" or "-int" or "-dvl" or "-build" in rtoutjsonload['items'][i]['metadata']['name']:
+         if any(c in  str(rtoutjsonload['items'][i]['metadata']['name'])  for c in arr1 ):
              urlnew =  ocpurl + ":443/api/v1/namespaces/" + rtoutjsonload['items'][i]['metadata']['name'] + "/resourcequotas/quota"
              getmemusage = requests.get(urlnew, headers=headers, verify=False).json()
              getmemusagetojson = json.dumps(getmemusage,  indent = 4)
@@ -168,10 +171,7 @@ while i < numprojects:
              cpu_quota = (getmemusagetojsonload["spec"]["hard"]["cpu"]).replace("m","")
              memory_quota = (getmemusagetojsonload["spec"]["hard"]["memory"]).replace("Gi","")
              #print(rtoutjsonload['items'][i]['metadata']['name'] + "CPU: " + cpu_quota + " MEMORY: " + memory_quota )
-         elif "-1-sbx" or "-2-sbx" in rtoutjsonload['items'][i]['metadata']['name']:
-              cpu_quota = 2
-              memory_quota = 12
-         elif "sbx-" in rtoutjsonload['items'][i]['metadata']['name']:
+         elif any(c in str(rtoutjsonload['items'][i]['metadata']['name']) for c in arr2):
               cpu_quota = 2
               memory_quota = 12
          else:
