@@ -227,13 +227,13 @@ with open('cluster_usage.csv') as fin:
                               str(round(tcpurequests/1000)),
                               str(round(tcpulimits/1000)),
                               str(round(tmemquotas)),
-                              str(round(tcpuquotas/1000)))
+                              str(round(tcpuquotas)))
     print("values are approximate and rounded")
     print(s)
 
 with open('cluster_usage.csv', mode='a') as usage_file:
               usage_writer = csv.writer(usage_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-              usage_writer.writerow(["Total", round(tmemuage/1024), round(tmemreq/1024), round(tmemlimit/1024), round(tcpuusage/1000), round(tcpurequests/1000), round(tcpulimits/1000), round(tmemquotas), round(tcpuquotas/1000) ])
+              usage_writer.writerow(["Total", round(tmemuage/1024), round(tmemreq/1024), round(tmemlimit/1024), round(tcpuusage/1000), round(tcpurequests/1000), round(tcpulimits/1000), round(tmemquotas), round(tcpuquotas) ])
 
 
 
