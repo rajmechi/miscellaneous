@@ -1,0 +1,19 @@
+provider "vsphere" {
+  user           = "xxxx"
+  password       = "xxx"
+  vsphere_server = "xxxx"
+
+  # If you have a self-signed cert
+  allow_unverified_ssl = true
+
+}
+
+resource "vsphere_virtual_machine_snapshot" "demo1" {
+  virtual_machine_uuid = "422e9057-29c7-848a-c50f-1993800038c2"
+  snapshot_name        = "tstsnapone"
+  description          = "This is Demo Snapshot"
+  memory               = "true"
+  quiesce              = "true"
+  remove_children      = "false"
+  consolidate          = "true"
+}
