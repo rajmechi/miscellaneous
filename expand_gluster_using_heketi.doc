@@ -1,3 +1,5 @@
+    du -a /var/ | sort -n -r | head -n 20
+    
     1 get cluster list  
        heketi-cli --server http://localhost:8080 --user admin --secret xxxxxxxxxxx cluster list
     2  get specific cluster info 
