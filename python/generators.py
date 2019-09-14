@@ -80,3 +80,26 @@ print("the result is : " + str(num))
 print("func ended  at : " + str(datetime.datetime.now()))
 process = psutil.Process(os.getpid())
 print("memory after done : " + str(process.memory_info().rss) )
+
+
+#more memory usage when generator converted into list
+import os
+import psutil
+import datetime
+
+#list comphre
+print("func started at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory before start : " + str(process.memory_info().rss) )
+
+my_nums = ( i*i for i in range(2,800000));
+print(type(my_nums))
+munums = list(my_nums)
+print(type(munums))
+#for num in my_nums:
+#    num = num+1
+#print("the result is : " + str(num))
+
+print("func ended  at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory after done : " + str(process.memory_info().rss) )
