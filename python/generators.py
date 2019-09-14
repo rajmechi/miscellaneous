@@ -103,3 +103,8 @@ print(type(munums))
 print("func ended  at : " + str(datetime.datetime.now()))
 process = psutil.Process(os.getpid())
 print("memory after done : " + str(process.memory_info().rss) )
+
+
+#get specific element 
+my_nums = ( i*i for i in range(0,800000));
+xxx = next(islice(my_nums, 765757, None), None)
