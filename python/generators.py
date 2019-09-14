@@ -41,3 +41,42 @@ my_nums = [ i*i for i in [1,2,3,4,5,6]];
 
 for num in my_nums:
     print(num)
+    
+#below not generator
+import os
+import psutil
+import datetime
+
+#list comphre
+print("func started at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory before start : " + str(process.memory_info().rss) )
+
+my_nums = [ i*i for i in range(2,800000)];
+for num in my_nums:
+    num = num+1
+print("the result is : " + str(num))
+
+print("func ended  at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory after done : " + str(process.memory_info().rss) )
+
+
+#below is generator
+import os
+import psutil
+import datetime
+
+#list comphre
+print("func started at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory before start : " + str(process.memory_info().rss) )
+
+my_nums = ( i*i for i in range(2,800000));
+for num in my_nums:
+    num = num+1
+print("the result is : " + str(num))
+
+print("func ended  at : " + str(datetime.datetime.now()))
+process = psutil.Process(os.getpid())
+print("memory after done : " + str(process.memory_info().rss) )
