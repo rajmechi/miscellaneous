@@ -7,13 +7,21 @@ def check(func):
         return func(a, b)
     return checkb
 
+#below with out decorator
 
 def div(a, b):
     print("entered div function")
     return a + b
-
-
 divone = check(div)
-# print(diva(10,0))
+
+test = divone(20, 4)
+print(test)
+
+#below with decorator
+
+@check
+def divone(a,b):
+    return a+b
+
 test = divone(20, 4)
 print(test)
