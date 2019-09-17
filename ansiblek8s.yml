@@ -1,0 +1,22 @@
+- hosts: localhost
+  tasks:
+    #- set_fact:
+    #    projects: "{{ lookup('k8s', api_version='v1', kind='Namespace') }}"
+    #  register: testproject
+
+    #- debug: var=testproject.ansible_facts.projects[0]
+
+    #- name: "Display all server ports and names from cluster1"
+    #  debug: msg="namespace is {{ item }}"
+    #  loop: "{{ testproject.ansible_facts | json_query('projects[*].metadata.name') }}"
+
+    - name: Fetch all deployments in a namespace
+      set_fact:
+         deploymentcfgs: "{{ lookup('k8s', api_version='apps.openshift.io/v1' , kind='DeploymentConfig' , namespace='infra-test') }}"
+      register: testdepg
+
+    - debug: var={{ testdepg.ansible_facts.deploymentcfgs | length }}
+
+    - name: "Display all server ports and names from cluster1"
+      debug: msg="deployment config is {{ item }}"
+      loop: "{{ testdepg.ansible_facts |  json_query('deploymentcfgs[*].metadata.name') }}"
