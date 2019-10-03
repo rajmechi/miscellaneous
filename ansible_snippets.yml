@@ -1,0 +1,15 @@
+  tasks:
+   - command: hostname
+     delegate_to: localhost
+     become: no
+
+   - shell: mkdir /tmp/ocp/
+     delegate_to: localhost
+     become: no
+
+   - shell: exit 1
+     register: task_result
+     until: task_result.rc == 0
+     retries: 10
+     delay: 4
+     ignore_errors: yes
