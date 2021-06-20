@@ -4,7 +4,8 @@ rm -rf roots.pem
 rm -rf listoffingerprintsfromjava.out
 rm -rf cacerts
 
-wget https://pki.goog/roots.pem
+#wget https://pki.goog/roots.pem
+curl -o  roots.pem https://pki.goog/roots.pem
 sed -ne "/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/p" roots.pem  > allcerts.pem
 certcount=$(grep -e "-----BEGIN CERTIFICATE-----" allcerts.pem | wc -l)
 for index in $(seq 1 $certcount); do
