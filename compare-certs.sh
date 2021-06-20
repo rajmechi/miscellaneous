@@ -1,3 +1,4 @@
+pod_name=airport-auth-api-150-l5qkn
 # get all root certs SHAs
 rm -rf rootpemshas.pem
 rm -rf roots.pem
@@ -18,7 +19,8 @@ done
 sed -i -e 's/SHA256 Fingerprint=//g' rootpemshas.pem
 
 #compre root cert SHAs with java
-cp /etc/pki/ca-trust/extracted/java/cacerts .
+#cp /etc/pki/ca-trust/extracted/java/cacerts .
+oc cp $pod_name:/etc/pki/ca-trust/extracted/java/cacerts cacerts
 keytool -list -keystore cacerts -storepass changeit | grep "Certificate fingerprint" > listoffingerprintsfromjava.out
 
 while read line
