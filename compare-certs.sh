@@ -15,7 +15,7 @@ else
 fi
 
 # delete temp files
-rm -rf roots.pem cleaned-roots.pem index.crt parsed-remote-or-local-certs.pem listoffingerprintsfromjava.out cacertsfrompod
+rm -rf roots.pem cleaned-roots.pem index.crt parsed-remote-or-local-certs.pem listoffingerprintsfromjava-from-pod.out cacertsfrompod
 
 #get remote certificates to be compared with
 #wget https://pki.goog/roots.pem
@@ -35,11 +35,11 @@ sed -i -e 's/SHA256 Fingerprint=//g' parsed-remote-or-local-certs.pem
 #compre root cert SHAs with java
 #cp /etc/pki/ca-trust/extracted/java/cacerts .
 oc cp $pod_name:/etc/pki/ca-trust/extracted/java/cacerts cacertsfrompod
-keytool -list -keystore cacertsfrompod -storepass changeit | grep "Certificate fingerprint" > listoffingerprintsfromjava.out
+keytool -list -keystore cacertsfrompod -storepass changeit | grep "Certificate fingerprint" > listoffingerprintsfromjava-from-pod.out
 
 while read line
 do
-    if [[ ! -z $(grep "$line" listoffingerprintsfromjava.out) ]];
+    if [[ ! -z $(grep "$line" listoffingerprintsfromjava-from-pod.out) ]];
     then
       echo "FOUND: $line"
     else
